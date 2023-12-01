@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "title": "Yo quiero enamorarme",
+      "content": "Tu eres mi sueño",
+      "is_archived": false
+    },
+    {
+      "id": 2,
+      "title": "Porteño",
+      "content": "Mate térmico",
+      "is_archived": true
+    },
+    {
+      "id": 3,
+      "title": "Hope",
+      "content": "Te quiero",
+      "is_archived": false
+    }
+]

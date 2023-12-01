@@ -1,0 +1,60 @@
+.form_control {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form_control input {
+    background: var(--white);
+    border: 1px solid var(--black);
+    border-radius: 0;
+    box-sizing: border-box;
+    color: var(--black);
+    margin: 0;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 4px;
+    outline: none;
+}
+
+.input_error {
+  border-bottom: 1px solid var(--red-error) !important;
+  box-shadow: 0 1px 0 0 var(--red-error);
+}
+
+.input_valid {
+  border-bottom: 1px solid var(--green);
+  box-shadow: 0 1px 0 0 var(--green);
+  background-color: var(--light-grey-100);
+}
+
+.floating_label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 17px;
+  transition: 0.2s ease-out;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.input_valid ~ .floating_label,
+.input_error ~ .floating_label,
+.form_control input:focus ~ .floating_label,
+.form_control input:focus ~ .floating_label,
+.input_with_text ~ .floating_label {
+  top: -8px;
+  left: 15px;
+  font-size: 11px;
+  background-color: var(--white);
+  padding: 0 5px;
+}
+
+.form_error_message {
+  color: var(--red-error);
+  font-size: 11px;
+}
+
+.form_control input::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}

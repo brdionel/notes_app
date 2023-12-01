@@ -1,0 +1,30 @@
+.container {
+    border-bottom: 1px solid var(--black);
+}
+
+.header_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .header_container h1 {
+        min-width: 250px;
+    }
+}
+
+.header_container_logo {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.link {
+    color: var(--blue);
+    font-size: 12px;
+    text-decoration: underline;
+    font-weight: 400;
+    cursor: pointer;
+}

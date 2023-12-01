@@ -1,0 +1,12 @@
+.button {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--black);
+    height: 50px;
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    cursor: pointer;
+    transition: all .3s ease;
+}

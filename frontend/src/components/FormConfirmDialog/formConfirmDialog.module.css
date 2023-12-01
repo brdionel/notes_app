@@ -1,0 +1,10 @@
+.form_container {
+    padding: 1rem 1.5rem;
+}
+
+.button_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}

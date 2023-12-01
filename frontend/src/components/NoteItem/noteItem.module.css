@@ -1,0 +1,46 @@
+.note_container {
+  border: 1px solid var(--black);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .note_container {
+    padding: 1rem 1.5rem;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  } 
+}
+
+.note_container h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.button_container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button_container svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 768px) {
+  .button_container svg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+}
+
+.dateLabel {
+  font-weight: 700;
+}
