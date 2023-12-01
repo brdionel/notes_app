@@ -3,7 +3,6 @@ import Modal from "./components/Modal/modal";
 import NoteForm from "./components/NoteForm/noteForm";
 import useApp from "./hooks/App/useApp";
 import useNotes from "./hooks/Notes/useNotes";
-import classes from "./App.module.css";
 import Wrapper from "./components/Wrapper/wrapper";
 import NotesList from "./components/NotesList/notesList";
 import ConfirmDialog from "./components/ConfirmDialog/confirmDialog";
@@ -12,7 +11,7 @@ import FormConfirmDialog from "./components/FormConfirmDialog/formConfirmDialog"
 function App() {
   const { showNoteForm, handleCloseConfirmDeleteNote, showConfirmDeleteNote } =
     useApp();
-  const { noteToDelete, removeFromNotes } = useNotes();
+  const { removeFromNotes } = useNotes();
 
   return (
     <div>
