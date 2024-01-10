@@ -2,15 +2,22 @@ import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
 import { BiSolidBox } from "react-icons/bi";
 import { BsBoxArrowUp } from "react-icons/bs";
 import classes from "./noteItem.module.css";
+import useCategories from "../../hooks/Categories/useCategories";
 
 function NoteItem({ note, toggleArchiveNote, handleClickEdit, handleNoteToDelete }) {
+  const { categories } = useCategories()
+  
   return (
-    <div className={classes.note_container} key={note.id}>
+    <div className={classes.note_container}>
       <div>
         <h3>{note.title}</h3>
-        <small>
-          <span className={classes.dateLabel}>Last edited:</span> {note.date}
-        </small>
+        <div className={classes.note_category_container}>
+          {note.categories?.map(category => (
+          <span className={classes.note_category_chip}>
+            {category.name ?? categories.find(item => item.id === category).name}
+          </span>
+          ))}
+        </div>
       </div>
       <div className={classes.button_container}>
         <span
@@ -22,7 +29,7 @@ function NoteItem({ note, toggleArchiveNote, handleClickEdit, handleNoteToDelete
         <span title="Edit" onClick={() => handleClickEdit(note)}>
           <AiTwotoneEdit />
         </span>
-        <span title="Delete" onClick={() => handleNoteToDelete(note)}>
+        <span title="Delete" onClick={() => handleNoteToDelete(note.id)}>
           <AiFillDelete />
         </span>
       </div>

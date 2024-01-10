@@ -3,13 +3,13 @@ import { GrClose } from "react-icons/gr";
 import useApp from "../../hooks/App/useApp";
 import classes from "./modal.module.css";
 
-function ModalContent({ children }) {
-  const { modalRef, handleCloseNoteForm } = useApp();
+function ModalContent({ handleClose, children }) {
+
   return (
     <div className={classes.modal_container}>
-      <div className={classes.modal_content} ref={modalRef}>
+      <div className={classes.modal_content}>
         <button
-          onClick={handleCloseNoteForm}
+          onClick={handleClose}
           className={classes.close_button}
         >
           <GrClose />

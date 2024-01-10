@@ -1,0 +1,141 @@
+.login_container {
+  padding: 25px 0;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.login_container::-webkit-scrollbar {
+  background-color: var(--light-grey);
+  width: 3px;
+  margin-left: 1rem;
+}
+
+.login_container::-webkit-scrollbar-thumb {
+  background-color: var(--black);
+  border-radius: 10px;
+}
+
+.login_title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--black);
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.login_subtitle {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--black);
+}
+
+.login_email_section_email_label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--black);
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.login_form {
+  width: 100%;
+  max-width: 418px;
+  max-height: 80vh;
+  display: grid;
+  gap: 1rem;
+}
+
+.login_form .input_container {
+  position: relative;
+  /* margin-bottom: 1.5rem; */
+}
+
+/* To hide the placeholder when applying the "floating label" effect */
+.login_form input::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.login_form input {
+  background: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 0;
+  box-sizing: border-box;
+  color: var(--black);
+  margin: 0;
+  padding: 15px;
+  width: 100%;
+  margin-bottom: 4px;
+  outline: none;
+}
+
+.login_password_section_label {
+  margin-top: 15px;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 400px;
+  line-height: 22px;
+}
+
+.login_form_login_button {
+  width: auto !important;
+}
+
+.login_form_forgot_password_container {
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.show_password_container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.error_login_message {
+  color: var(--red-error);
+  font-size: 11px;
+}
+
+.floating_label {
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 20px;
+  transition: 0.2s ease-out;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.input_valid ~ .floating_label,
+.input_error ~ .floating_label,
+.register_form_input_container input:focus ~ .floating_label,
+.input_container input:focus ~ .floating_label {
+  top: -8px;
+  left: 15px;
+  font-size: 11px;
+  background-color: var(--white);
+  padding: 0 5px;
+}
+
+.form_error_message {
+  color: var(--red-error);
+  font-size: 11px;
+}
+
+.login_button_container {
+  display: flex;
+  gap: 1rem;
+}
+
+.login_button_container button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.error_container {
+  /* margin-bottom: 1rem; */
+}

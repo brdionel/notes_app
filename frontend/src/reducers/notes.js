@@ -1,14 +1,5 @@
 import { formatDate } from "../utils/helper";
 
-import notesMock from "../mocks/notes.json";
-
-const initialStatePartal = notesMock || [];
-export const initialState = initialStatePartal.map((note) => {
-  return {
-    ...note,
-    date: formatDate(new Date()),
-  };
-});
 //aqui primero teno que ir a la base de datos;
 
 export const NOTES_ACTION_TYPES = {
@@ -16,6 +7,8 @@ export const NOTES_ACTION_TYPES = {
   REMOVE_FROM_NOTES: "REMOVE_FROM_NOTES",
   UPDATE_NOTE: "UPDATE_NOTE",
   TOGGLE_ARCHIVE_NOTE: "TOGGLE_ARCHIVE_NOTE",
+  SET_NOTES: "SET_NOTES",
+  CLEAR_NOTES: "CLEAR_NOTES",
 };
 
 export const notesReducer = (state, action) => {
@@ -23,22 +16,12 @@ export const notesReducer = (state, action) => {
 
   switch (actionType) {
     case NOTES_ACTION_TYPES.ADD_TO_NOTES: {
-      const { title, content } = actionPayload;
-      const newNote = {
-        id: state.length + 1,
-        title,
-        content,
-        date: formatDate(new Date()),
-        is_archived: false,
-      };
-
-      const newNotes = [...state, newNote];
+      const newNotes = [...state, actionPayload];
       return newNotes;
     }
 
     case NOTES_ACTION_TYPES.REMOVE_FROM_NOTES: {
-      const { id } = actionPayload;
-      const noteIndex = state.findIndex((note) => note.id === id);
+      const noteIndex = state.findIndex((note) => note.id === actionPayload);
       const newNotes = [...state];
 
       newNotes.splice(noteIndex, 1);
@@ -48,12 +31,16 @@ export const notesReducer = (state, action) => {
     case NOTES_ACTION_TYPES.UPDATE_NOTE: {
       const { noteData, clearNoteToEditState, handleNoteIsEdited, isEdited } =
         actionPayload;
-      const { id, title, content } = noteData;
+      const { id, title, content, categories } = noteData;
       const noteIndex = state.findIndex((note) => note.id === id);
       if (noteIndex >= 0) {
         const newNotesState = structuredClone(state);
         if (newNotesState[noteIndex].title !== title) {
           newNotesState[noteIndex].title = title;
+          handleNoteIsEdited(true);
+        }
+        if (categories) {
+          newNotesState[noteIndex].categories = categories;
           handleNoteIsEdited(true);
         }
         if (newNotesState[noteIndex].content !== content) {
@@ -80,6 +67,16 @@ export const notesReducer = (state, action) => {
         return newNotesState;
       }
       return state;
+    }
+
+    case NOTES_ACTION_TYPES.SET_NOTES: {
+      const { notes } = actionPayload;
+      const newNoteList = [...notes];
+      return newNoteList;
+    }
+
+    case NOTES_ACTION_TYPES.CLEAR_NOTES: {
+      return [];
     }
 
     default:

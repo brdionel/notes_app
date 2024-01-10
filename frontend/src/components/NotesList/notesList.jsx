@@ -2,11 +2,15 @@ import useNotes from "../../hooks/Notes/useNotes";
 import classes from "./notesList.module.css";
 import useApp from "../../hooks/App/useApp";
 import NoteItem from "../NoteItem/noteItem";
+import { useUser } from "../../hooks/Users/useUser";
 
 function NotesList() {
 
-    const { notes, handleNoteToEdit, toggleArchiveNote, handleNoteToDelete } = useNotes();
+    const { notes, handleNoteToEdit, toggleArchiveNote, handleNoteToDelete, loadingNotes } = useNotes();
     const { setShowNoteForm, mode} = useApp();
+    const {currentUser} = useUser()
+
+    if(!currentUser) return []
 
     const handleClickEdit = (noteClick) => {
       const noteToEdit = notes.find( note => note.id === noteClick.id);
@@ -31,6 +35,8 @@ function NotesList() {
       }
     }
 
+    if(loadingNotes) return <p>Loading!</p>
+
     return (
         <>
         {getNotesList().length > 0 
@@ -42,6 +48,7 @@ function NotesList() {
                 toggleArchiveNote={toggleArchiveNote} 
                 handleClickEdit={handleClickEdit} 
                 handleNoteToDelete={handleNoteToDelete}
+                key={note.id}
               />
             ))}
           </ul>

@@ -10,3 +10,7 @@
     cursor: pointer;
     transition: all .3s ease;
 }
+
+.primary {
+    background-color: var(--yellow);
+}

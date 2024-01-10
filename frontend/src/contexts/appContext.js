@@ -6,11 +6,11 @@ export function AppContextProvider({ children }) {
   const [mode, setMode] = useState("main");
   const [showNoteForm, setShowNoteForm] = useState(false);
   const [showConfirmDeleteNote, setShowConfirmDeleteNote] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const modalRef = useRef();
   const dialogRef = useRef();
 
-  const handleMode = (value) => {
+  const toggleMode = () => {
     if (mode === "main") {
       setMode("archived");
     } else if (mode === "archived") {
@@ -37,25 +37,6 @@ export function AppContextProvider({ children }) {
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
-        showNoteForm &&
-        modalRef.current &&
-        !modalRef.current.contains(event.target)
-      ) {
-        setShowNoteForm(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [showNoteForm]);
-
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      console.log("Event Target -> ", event.target);
-      console.log(dialogRef);
-      if (
         showConfirmDeleteNote &&
         dialogRef.current &&
         !dialogRef.current.contains(event.target)
@@ -64,20 +45,25 @@ export function AppContextProvider({ children }) {
       }
     };
 
-    console.log({ showConfirmDeleteNote });
-
     document.addEventListener("mousedown", handleOutsideClick);
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
   }, [showConfirmDeleteNote]);
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleShowModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <AppContext.Provider
       value={{
         mode,
-        handleMode,
-        modalRef,
+        toggleMode,
         showNoteForm,
         setShowNoteForm,
         handleShowNoteForm,
@@ -86,6 +72,9 @@ export function AppContextProvider({ children }) {
         handleCloseConfirmDeleteNote,
         showConfirmDeleteNote,
         dialogRef,
+        isModalOpen,
+        handleCloseModal,
+        handleShowModal,
       }}
     >
       {children}
