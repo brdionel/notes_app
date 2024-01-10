@@ -1,5 +1,4 @@
 import Wrapper from "../Wrapper/wrapper";
-import defaultClasses from "./introduction.module.css";
 import noteClasses from "../NoteItem/noteItem.module.css";
 import { BiSolidBox } from "react-icons/bi";
 import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
@@ -7,7 +6,7 @@ import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
 function Introduction() {
   return (
     <Wrapper>
-      <main>
+      <main style={{ marginTop: "2rem"}}>
         <p>
           It's a web application that allows you to take notes, tag and filter
           them.

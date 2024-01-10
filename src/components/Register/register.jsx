@@ -33,7 +33,7 @@ const Register = ({
         }}
         onSubmit={async (values) => {
           handlePassword(values.password);
-          const rta = await register(email, values.password);
+          await register(email, values.password);
         }}
       >
         {({ errors, isSubmitting, touched, values }) => (

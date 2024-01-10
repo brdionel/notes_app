@@ -118,7 +118,7 @@ export default function Login() {
                 );
                 if (responseLogin) {
                   const { token } = responseLogin;
-                  const rta = await getNotes(token);
+                  await getNotes(token);
                 }
               } catch (error) {
                 console.log({ error });

@@ -16,6 +16,7 @@ function useHelperApp() {
       setToken(loggedUserJSON.token);
       getNotes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleCloseFormNotesModal = () => {

@@ -29,9 +29,7 @@ const MultipleSelect = (props) => {
   const getSelectedOptionsLabels = () => {
     const categoryLabels = selectedOptions.map((option) => {
       const category = options.find((category) => category.id === option);
-      if (category) {
-        return category.name;
-      }
+      return category?.name;
     });
     return categoryLabels.join(", ");
   };

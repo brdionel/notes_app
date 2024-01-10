@@ -93,16 +93,18 @@ export function NotesContextProvider({ children }) {
   const removeFromNotes = async (token) => {
     try {
       const response = await deleteNote(noteToDelete, token);
-      dispatch({
-        type: REMOVE_FROM_NOTES,
-        payload: noteToDelete,
-      });
-      handleCloseConfirmDeleteNote();
-      iziToast.success({
-        title: "OK",
-        message: "Successfully deleted note!",
-        position: "topRight",
-      });
+      if (response.status === 200) {
+        dispatch({
+          type: REMOVE_FROM_NOTES,
+          payload: noteToDelete,
+        });
+        handleCloseConfirmDeleteNote();
+        iziToast.success({
+          title: "OK",
+          message: "Successfully deleted note!",
+          position: "topRight",
+        });
+      }
     } catch (error) {}
   };
 

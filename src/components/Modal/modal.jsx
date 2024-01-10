@@ -1,6 +1,5 @@
 import { createPortal } from "react-dom";
 import { GrClose } from "react-icons/gr";
-import useApp from "../../hooks/App/useApp";
 import classes from "./modal.module.css";
 
 function ModalContent({ handleClose, children }) {
