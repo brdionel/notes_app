@@ -35,14 +35,14 @@ function Introduction() {
         </p>
 
         <p>Example:</p>
-        <div>
+        <div className={classes.introduction_notes_container}>
           {notes.map((note) => (
-            <div className={noteClasses.note_container}>
+            <div className={noteClasses.note_container} key={note.title}>
               <div>
                 <h3>{note.title}</h3>
                 <div className={noteClasses.note_category_container}>
                   {note.categories.map((category) => (
-                    <span className={noteClasses.note_category_chip}>
+                    <span className={noteClasses.note_category_chip} key={category}>
                       {category}
                     </span>
                   ))}

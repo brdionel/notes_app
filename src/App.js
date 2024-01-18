@@ -12,6 +12,7 @@ import Login from "./components/Login/login";
 import useHelperApp from "./hooks/App/useHelperApp";
 import Introduction from "./components/Introduction/introduction";
 import classes from "./App.module.css";
+import Loader from "./components/Loader/loader";
 
 function App() {
   const {
@@ -24,9 +25,8 @@ function App() {
 
   const { removeFromNotes } = useNotes();
 
-  const { handleCloseFormNotesModal, currentUser } = useHelperApp();
-  console.log({ currentUser });
-
+  const { handleCloseFormNotesModal, currentUser, loadingCurrentUser } = useHelperApp();
+  
   return (
     <div>
       <Helmet>
@@ -35,7 +35,8 @@ function App() {
 
       <Header />
 
-      {!currentUser && <Introduction />}
+      {loadingCurrentUser && <Loader />}
+      {!loadingCurrentUser && !currentUser && <Introduction />}
 
       <Wrapper>
         <NotesList />

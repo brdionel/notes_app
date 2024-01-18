@@ -13,7 +13,7 @@ function NoteItem({ note, toggleArchiveNote, handleClickEdit, handleNoteToDelete
         <h3>{note.title}</h3>
         <div className={classes.note_category_container}>
           {note.categories?.map(category => (
-          <span className={classes.note_category_chip}>
+          <span className={classes.note_category_chip} key={category.name}>
             {category.name ?? categories.find(item => item.id === category).name}
           </span>
           ))}

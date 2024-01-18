@@ -66,10 +66,11 @@ export function NotesContextProvider({ children }) {
   const updateNote = async (noteData) => {
     try {
       const { id, ...data } = noteData;
+      const categoriesToUpdate = data.categories.map( item => item.id ?? item)
       const response = await updateNoteService(id, {
         ...data,
         is_archived: !!data.is_archived,
-        categories: data.categories,
+        categories: categoriesToUpdate,
       });
       if (response.status === 200) {
         dispatch({

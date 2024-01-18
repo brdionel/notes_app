@@ -169,6 +169,7 @@ export default function Login() {
                     disabled={isSubmitting}
                     text={"GO BACK"}
                     handleClick={() => setStep(0)}
+                    type={"button"}
                   />
                   <Button
                     disabled={isSubmitting}

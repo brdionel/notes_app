@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../Users/useUser";
 import useNotes from "../Notes/useNotes";
 import { setToken } from "../../services/notes";
@@ -8,6 +8,7 @@ function useHelperApp() {
   const { setCurrentUser, currentUser } = useUser();
   const { getNotes, clearNoteToEditState } = useNotes();
   const { handleCloseNoteForm } = useApp();
+  const [loadingCurrentUser, setLoadingCurrentUser] = useState(true);
 
   useEffect(() => {
     const loggedUserJSON = JSON.parse(localStorage.getItem("currentUser"));
@@ -16,6 +17,7 @@ function useHelperApp() {
       setToken(loggedUserJSON.token);
       getNotes();
     }
+    setLoadingCurrentUser(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,6 +29,7 @@ function useHelperApp() {
   return {
     handleCloseFormNotesModal,
     currentUser,
+    loadingCurrentUser
   };
 }
 
