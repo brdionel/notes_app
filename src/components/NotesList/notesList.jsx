@@ -3,6 +3,7 @@ import classes from "./notesList.module.css";
 import useApp from "../../hooks/App/useApp";
 import NoteItem from "../NoteItem/noteItem";
 import { useUser } from "../../hooks/Users/useUser";
+import Loader from "../Loader/loader";
 
 function NotesList() {
 
@@ -35,7 +36,7 @@ function NotesList() {
       }
     }
 
-    if(loadingNotes) return <p>Loading!</p>
+    if(loadingNotes) return <Loader />
 
     return (
         <>

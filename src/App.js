@@ -11,6 +11,7 @@ import FormConfirmDialog from "./components/FormConfirmDialog/formConfirmDialog"
 import Login from "./components/Login/login";
 import useHelperApp from "./hooks/App/useHelperApp";
 import Introduction from "./components/Introduction/introduction";
+import classes from "./App.module.css";
 
 function App() {
   const {
@@ -61,6 +62,8 @@ function App() {
           />
         </ConfirmDialog>
       )}
+
+      <div className={classes.box_mobile_shadow}></div>
     </div>
   );
 }

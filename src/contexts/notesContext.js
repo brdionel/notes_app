@@ -87,7 +87,13 @@ export function NotesContextProvider({ children }) {
           position: "topRight",
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      iziToast.error({
+        title: "Error",
+        message: "Error updating note! Try again, please.",
+        position: "topRight",
+      });
+    }
   };
 
   const removeFromNotes = async (token) => {

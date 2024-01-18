@@ -1,0 +1,9 @@
+span svg {
+    cursor: auto!important;
+}
+
+.message {
+    background-color: var(--yellow);
+    padding: 15px;
+    width: fit-content;
+}

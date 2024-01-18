@@ -44,7 +44,11 @@ function NoteForm() {
                     const errors = {};
     
                     if (!values.title) {
-                    errors.title = "Write a title to create a note";
+                        errors.title = "Write a title to create a note";
+                    }
+
+                    if (values.title.length < 5) {
+                        errors.title = "The title must contain more than 5 characters";
                     } 
     
                     return errors;
