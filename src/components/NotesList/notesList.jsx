@@ -22,7 +22,7 @@ function NotesList() {
 
   if (!currentUser || !pageControl) return [];
 
-  const { currentPage, totalPages, pageSize, totalNotes } = pageControl;
+  const { totalPages } = pageControl;
 
   const handleClickEdit = (noteClick) => {
     const noteToEdit = notes.find((note) => note.id === noteClick.id);
