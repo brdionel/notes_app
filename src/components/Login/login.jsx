@@ -5,6 +5,7 @@ import ShowPasswordContent from "../ShowPasswordContent/showPasswordContent";
 import classes from "./login.module.css";
 import Register from "../Register/register";
 import useNotes from "../../hooks/Notes/useNotes";
+import { setToken } from "../../services/notes";
 
 export default function Login() {
   const {
@@ -118,7 +119,8 @@ export default function Login() {
                 );
                 if (responseLogin) {
                   const { token } = responseLogin;
-                  await getNotes(token);
+                  setToken(token)
+                  await getNotes();
                 }
               } catch (error) {
                 console.log({ error });
