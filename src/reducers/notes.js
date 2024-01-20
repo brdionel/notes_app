@@ -70,9 +70,17 @@ export const notesReducer = (state, action) => {
     }
 
     case NOTES_ACTION_TYPES.SET_NOTES: {
-      const { notes } = actionPayload;
-      const newNoteList = [...notes];
-      return newNoteList;
+      const notes = [...state, ...actionPayload];
+      const notesSet = new Set();
+      const notesFiltered = notes.filter((note) => {
+        if (!notesSet.has(note.id)) {
+          notesSet.add(note.id, note);
+          return true;
+        }
+        return false;
+      });
+
+      return notesFiltered;
     }
 
     case NOTES_ACTION_TYPES.CLEAR_NOTES: {

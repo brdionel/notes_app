@@ -7,8 +7,8 @@ export const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
 };
 
-export const getAllNotes = () => {
-  return axios.get(`${SERVER_URL}/notes`, {
+export const getAllNotes = (page) => {
+  return axios.get(`${SERVER_URL}/notes?page=${page}`, {
     headers: {
       Authorization: token,
     },

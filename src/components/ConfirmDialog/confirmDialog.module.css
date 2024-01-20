@@ -26,3 +26,9 @@
   /* Estilos para mostrar el modal, por ejemplo, opacidad completa */
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+  .dialog_content {
+    width: 70vw;
+  }
+}

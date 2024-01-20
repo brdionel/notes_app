@@ -31,8 +31,8 @@ export const useUser = () => {
   const handleSubmitEmail = async (emailLogin) => {
     try {
       const response = await validateEmailService(emailLogin);
-      if (response !== undefined) {
-        if (response.data.users) {
+      if (response.data !== undefined) {
+        if (response.data) {
           setStep(1);
         } else {
           setStep(2);

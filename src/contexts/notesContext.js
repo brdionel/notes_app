@@ -8,6 +8,7 @@ import {
 } from "../services/notes";
 import { notesReducer, NOTES_ACTION_TYPES } from "../reducers/notes";
 import useApp from "../hooks/App/useApp";
+import { isMobile } from "../utils/helper";
 
 const NotesContext = createContext();
 
@@ -25,6 +26,9 @@ export function NotesContextProvider({ children }) {
   const [isEdited, setIsEdited] = useState(false);
   const [noteToDelete, setNoteToDelete] = useState(null);
   const [loadingNotes, setLoadingNotes] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageControl, setPageControl] = useState(null);
+  const [hasMore, setHasMore] = useState(true)
   const {
     handleShowConfirmDeleteNote,
     handleCloseConfirmDeleteNote,
@@ -66,7 +70,7 @@ export function NotesContextProvider({ children }) {
   const updateNote = async (noteData) => {
     try {
       const { id, ...data } = noteData;
-      const categoriesToUpdate = data.categories.map( item => item.id ?? item)
+      const categoriesToUpdate = data.categories.map((item) => item.id ?? item);
       const response = await updateNoteService(id, {
         ...data,
         is_archived: !!data.is_archived,
@@ -85,7 +89,7 @@ export function NotesContextProvider({ children }) {
         iziToast.success({
           title: "OK",
           message: "Successfully updated note!",
-          position: "topRight",
+          position: isMobile() ? "bottomLeft" : "topRight",
         });
       }
     } catch (error) {
@@ -135,19 +139,20 @@ export function NotesContextProvider({ children }) {
     } catch (error) {}
   };
 
-  const getNotes = async () => {
+  const getNotes = async (currentPage = 1) => {
     try {
-      setLoadingNotes(true);
-      const response = await getAllNotes();
+      const response = await getAllNotes(currentPage);
       if (response.status === 200) {
         dispatch({
           type: SET_NOTES,
-          payload: response.data,
+          payload: response.data.data,
         });
       }
-      setLoadingNotes(false);
+      if (currentPage === 1) {
+        setPageControl(response.data.meta);
+      }
     } catch (error) {
-      setLoadingNotes(false);
+      console.log(error);
     }
   };
 
@@ -156,6 +161,15 @@ export function NotesContextProvider({ children }) {
       type: CLEAR_NOTES,
     });
   };
+
+  const fetchMoreData = async () => {
+    if(currentPage !== pageControl.totalPages) {
+      setCurrentPage(currentPage + 1);
+      await getNotes(currentPage + 1);
+    } else {
+      setHasMore(false)
+    };
+  }
 
   return (
     <NotesContext.Provider
@@ -173,6 +187,10 @@ export function NotesContextProvider({ children }) {
         getNotes,
         clearNotes,
         clearNoteToEditState,
+        pageControl,
+        fetchMoreData,
+        hasMore,
+        setLoadingNotes
       }}
     >
       {children}
