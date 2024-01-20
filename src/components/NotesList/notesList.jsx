@@ -67,6 +67,7 @@ function NotesList() {
         dataLength={notes.length}
         next={fetchMoreData}
         hasMore={hasMore}
+        scrollThreshold={0.5}
         loader={<Loader />}
         endMessage={
           <div className={classes.noMoreProducts}>
