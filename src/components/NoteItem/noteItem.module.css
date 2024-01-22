@@ -8,6 +8,7 @@
   margin-bottom: 1rem;
   gap: 1rem;
   min-height: 54px;
+  background-color: var(--white);
 }
 
 @media (min-width: 768px) {
@@ -62,11 +63,80 @@
 .note_category_chip {
   height: 25px;
   color: rgba(0, 0, 0, 0.87);
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: var(--yellow);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 12px;
   font-size: 11px;
+}
+
+.checkbox_container {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--black);
+}
+
+.checkbox_persistent{
+  display: none;
+}
+
+label.persistent_label {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+}
+
+label.persistent_label::before {
+  content: "";
+  display: inline-block;
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 24px;
+  margin: 0 10px 0 0;
+  pointer-events: all;
+  width: 24px;
+  border: 3px solid var(--light-grey);
+  background-color: var(--white);
+  position: absolute;
+  left: 0;
+  top: -15px;
+  transition: border 0.30s cubic-bezier(0.3, 0, 0, 1);
+}
+
+.checkbox_container:hover label.persistent_label::before {
+    border: 3px solid var(--black);
+}
+
+.persistent_label::after {
+  content: "\2713";
+  font-size: 24px;
+  color: var(--yellow);
+  position: absolute;
+  top: -12px;
+  left: 5px;
+  visibility: hidden;
+}
+
+.checkbox_persistent:checked + .persistent_label::before {
+  background-color: var(--black);
+  border: 3px solid var(--black);
+}
+
+.checkbox_persistent:checked + .persistent_label::after {
+  visibility: visible;
+}
+
+.container_left {
+  display: flex;
+  gap: .5rem;
 }

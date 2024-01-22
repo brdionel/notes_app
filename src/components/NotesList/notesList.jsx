@@ -15,7 +15,7 @@ function NotesList() {
     loadingNotes,
     pageControl,
     fetchMoreData,
-    hasMore
+    hasMore,
   } = useNotes();
   const { setShowNoteForm, mode } = useApp();
   const { currentUser } = useUser();

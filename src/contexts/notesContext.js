@@ -120,23 +120,25 @@ export function NotesContextProvider({ children }) {
   };
 
   const toggleArchiveNote = async (noteData, token) => {
-    try {
-      const { id, is_archived } = noteData;
-      const response = await updateNoteService(id, {
-        is_archived: !is_archived,
-      });
-      if (response.status === 200) {
-        dispatch({
-          type: TOGGLE_ARCHIVE_NOTE,
-          payload: noteData,
+    setTimeout(async () => {
+      try {
+        const { id, is_archived } = noteData;
+        const response = await updateNoteService(id, {
+          is_archived: !is_archived,
         });
-        iziToast.success({
-          title: "OK",
-          message: "Successfully updated note!",
-          position: "topRight",
-        });
-      }
-    } catch (error) {}
+        if (response.status === 200) {
+          dispatch({
+            type: TOGGLE_ARCHIVE_NOTE,
+            payload: noteData,
+          });
+          iziToast.success({
+            title: "OK",
+            message: "Successfully updated note!",
+            position: "topRight",
+          });
+        }
+      } catch (error) {}
+    }, 500)
   };
 
   const getNotes = async (currentPage = 1) => {
