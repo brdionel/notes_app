@@ -4,9 +4,10 @@
 
 ## Features
 - :clipboard: List your notes.
-- :twisted_rightwards_arrows: Filter by archived notes.
-- ❤️ : Note management.
+- 📚: Filter by archived notes.
+- 📝 : Note management.
 - :key: Login and user registration.
 - :bust_in_silhouette: User management.
 - 💾 Persistence with localStorage.
-- State management with React Context API.
+- :twisted_rightwards_arrows: State management with React Context API.
+- 🔃: Infinite scroll.
