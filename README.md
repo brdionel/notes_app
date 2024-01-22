@@ -6,7 +6,7 @@
 - :clipboard: List your notes.
 - 📚 Filter by archived notes.
 - 📝 Note management.
-- :key Login: and user registration.
+- :key: Login and user registration.
 - :bust_in_silhouette: User management.
 - 💾 Persistence with localStorage.
 - :twisted_rightwards_arrows: State management with React Context API.
