@@ -42,8 +42,8 @@ export function NotesContextProvider({ children }) {
 
   const clearNoteToEditState = () => setNoteToEdit(null);
 
-  const handleNoteToDelete = (id) => {
-    setNoteToDelete(id);
+  const handleNoteToDelete = (_id) => {
+    setNoteToDelete(_id);
     handleShowConfirmDeleteNote();
   };
 
@@ -69,9 +69,9 @@ export function NotesContextProvider({ children }) {
 
   const updateNote = async (noteData) => {
     try {
-      const { id, ...data } = noteData;
-      const categoriesToUpdate = data.categories.map((item) => item.id ?? item);
-      const response = await updateNoteService(id, {
+      const { _id, ...data } = noteData;
+      const categoriesToUpdate = data.categories.map((item) => item._id ?? item);
+      const response = await updateNoteService(_id, {
         ...data,
         is_archived: !!data.is_archived,
         categories: categoriesToUpdate,
@@ -122,11 +122,11 @@ export function NotesContextProvider({ children }) {
   const toggleArchiveNote = async (noteData, token) => {
     setTimeout(async () => {
       try {
-        const { id, is_archived } = noteData;
-        const response = await updateNoteService(id, {
+        const { _id, is_archived } = noteData;
+        const response = await updateNoteService(_id, {
           is_archived: !is_archived,
         });
-        if (response.status === 200) {
+        if (response.status === 200 && response.data.success) {
           dispatch({
             type: TOGGLE_ARCHIVE_NOTE,
             payload: noteData,
@@ -136,6 +136,8 @@ export function NotesContextProvider({ children }) {
             message: "Successfully updated note!",
             position: "topRight",
           });
+        } else {
+
         }
       } catch (error) {}
     }, 500)

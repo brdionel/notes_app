@@ -25,7 +25,7 @@ function NotesList() {
   const { totalPages } = pageControl;
 
   const handleClickEdit = (noteClick) => {
-    const noteToEdit = notes.find((note) => note.id === noteClick.id);
+    const noteToEdit = notes.find((note) => note._id === noteClick._id);
 
     if (noteToEdit) {
       handleNoteToEdit(noteToEdit);
@@ -53,7 +53,7 @@ function NotesList() {
       toggleArchiveNote={toggleArchiveNote}
       handleClickEdit={handleClickEdit}
       handleNoteToDelete={handleNoteToDelete}
-      key={note.id}
+      key={note._id}
     />
   ));
 

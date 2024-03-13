@@ -24,7 +24,7 @@ function NoteItem({
       <div className={classes.container_left}>
         <div className={classes.checkbox_container}>
           <input
-            id={`persistent_${note.id}`}
+            id={`persistent_${note._id}`}
             className={classes.checkbox_persistent}
             type="checkbox"
             title={checked ? "Unarchive" : "Archive"}
@@ -32,7 +32,7 @@ function NoteItem({
             checked={checked}
             onChange={handleCheck}
           />
-          <label htmlFor={`persistent_${note.id}`} className={classes.persistent_label}></label>
+          <label htmlFor={`persistent_${note._id}`} className={classes.persistent_label}></label>
         </div>
         <div className={classes.container_content}>
           <h3>{note.title}</h3>
@@ -40,7 +40,7 @@ function NoteItem({
             {note.categories?.map((category) => (
               <span className={classes.note_category_chip} key={category.name}>
                 {category.name ??
-                  categories.find((item) => item.id === category).name}
+                  categories.find((item) => item._id === category).name}
               </span>
             ))}
           </div>
@@ -50,7 +50,7 @@ function NoteItem({
         <span title="Edit" onClick={() => handleClickEdit(note)}>
           <AiTwotoneEdit />
         </span>
-        <span title="Delete" onClick={() => handleNoteToDelete(note.id)} >
+        <span title="Delete" onClick={() => handleNoteToDelete(note._id)} >
           <AiFillDelete />
         </span>
       </div>

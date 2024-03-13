@@ -21,7 +21,7 @@ export const notesReducer = (state, action) => {
     }
 
     case NOTES_ACTION_TYPES.REMOVE_FROM_NOTES: {
-      const noteIndex = state.findIndex((note) => note.id === actionPayload);
+      const noteIndex = state.findIndex((note) => note._id === actionPayload);
       const newNotes = [...state];
 
       newNotes.splice(noteIndex, 1);
@@ -31,8 +31,8 @@ export const notesReducer = (state, action) => {
     case NOTES_ACTION_TYPES.UPDATE_NOTE: {
       const { noteData, clearNoteToEditState, handleNoteIsEdited, isEdited } =
         actionPayload;
-      const { id, title, content, categories } = noteData;
-      const noteIndex = state.findIndex((note) => note.id === id);
+      const { _id, title, content, categories } = noteData;
+      const noteIndex = state.findIndex((note) => note._id === _id);
       if (noteIndex >= 0) {
         const newNotesState = structuredClone(state);
         if (newNotesState[noteIndex].title !== title) {
@@ -56,9 +56,9 @@ export const notesReducer = (state, action) => {
     }
 
     case NOTES_ACTION_TYPES.TOGGLE_ARCHIVE_NOTE: {
-      const { id } = actionPayload;
+      const { _id } = actionPayload;
       const noteToToogleArchiveIndex = state.findIndex(
-        (note) => note.id === id
+        (note) => note._id === _id
       );
       if (noteToToogleArchiveIndex >= 0) {
         const newNotesState = structuredClone(state);
@@ -73,8 +73,8 @@ export const notesReducer = (state, action) => {
       const notes = [...state, ...actionPayload];
       const notesSet = new Set();
       const notesFiltered = notes.filter((note) => {
-        if (!notesSet.has(note.id)) {
-          notesSet.add(note.id, note);
+        if (!notesSet.has(note._id)) {
+          notesSet.add(note._id, note);
           return true;
         }
         return false;

@@ -32,7 +32,7 @@ export const useUser = () => {
     try {
       const response = await validateEmailService(emailLogin);
       if (response.data !== undefined) {
-        if (response.data) {
+        if (!response.data.error) {
           setStep(1);
         } else {
           setStep(2);
@@ -41,7 +41,7 @@ export const useUser = () => {
     } catch (error) {
       iziToast.error({
         title: "Error",
-        message: error.response.data.message,
+        message: error.response ? error.response.data.message : "Ha ocurrido un error, refresca la página por favor",
         position: "topRight",
       });
     }

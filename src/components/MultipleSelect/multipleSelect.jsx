@@ -8,7 +8,7 @@ const MultipleSelect = (props) => {
 
   const getInitialOptions = () => {
     if (Array.isArray(values[name]) && values[name].length > 0) {
-      return values[name].map((option) => option.id ?? option);
+      return values[name].map((option) => option._id ?? option);
     }
     return [];
   };
@@ -28,7 +28,7 @@ const MultipleSelect = (props) => {
 
   const getSelectedOptionsLabels = () => {
     const categoryLabels = selectedOptions.map((option) => {
-      const category = options.find((category) => category.id === option);
+      const category = options.find((category) => category._id === option);
       return category?.name;
     });
     return categoryLabels.join(", ");
@@ -64,13 +64,13 @@ const MultipleSelect = (props) => {
           render={({ field }) => (
             <div className={classes.options_container}>
               {options.map((option) => (
-                <label key={option.id} className={classes.option}>
+                <label key={option._id} className={classes.option}>
                   <input
                     type="checkbox"
                     {...field}
-                    value={option.id}
-                    checked={selectedOptions.includes(option.id)}
-                    onChange={() => handleOptionChange(option.id)}
+                    value={option._id}
+                    checked={selectedOptions.includes(option._id)}
+                    onChange={() => handleOptionChange(option._id)}
                   />
                   {option.name}
                 </label>

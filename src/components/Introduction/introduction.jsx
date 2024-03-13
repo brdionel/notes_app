@@ -29,10 +29,6 @@ function Introduction() {
   return (
     <Wrapper>
       <main style={{ marginTop: "2rem" }}>
-        <p className={classes.message}>
-          It's a web application that allows you to take notes, tag and filter
-          them.
-        </p>
 
         <p>Example:</p>
         <div className={classes.introduction_notes_container}>
@@ -60,7 +56,7 @@ function Introduction() {
             </div>
           ))}
         </div>
-        <p className={classes.message}>Try it, log in to save your notes.</p>
+        
       </main>
     </Wrapper>
   );

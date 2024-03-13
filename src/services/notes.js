@@ -23,16 +23,16 @@ export const createNote = (note) => {
   });
 };
 
-export const deleteNote = (id) => {
-  return axios.delete(`${SERVER_URL}/notes/${id}`, {
+export const deleteNote = (_id) => {
+  return axios.delete(`${SERVER_URL}/notes/${_id}`, {
     headers: {
       Authorization: token,
     },
   });
 };
 
-export const updateNote = (id, data) => {
-  return axios.patch(`${SERVER_URL}/notes/${id}`, data, {
+export const updateNote = (_id, data) => {
+  return axios.patch(`${SERVER_URL}/notes/${_id}`, data, {
     headers: {
       Authorization: token,
     },
