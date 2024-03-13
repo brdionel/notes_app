@@ -12,8 +12,6 @@
 - :twisted_rightwards_arrows: State management with React Context API.
 - 🔃 Infinite scroll.
 
-============================================================================================================
-
 <p>El frontend fue creado con React</p>
 
 ## Características
