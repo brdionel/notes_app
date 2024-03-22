@@ -17,7 +17,7 @@
 .custom_select {
   position: relative;
   border: 1px solid var(--black);
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
 }
 
 .select_header {

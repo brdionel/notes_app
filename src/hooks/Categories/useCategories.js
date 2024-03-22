@@ -2,12 +2,9 @@ import { useContext } from "react";
 import CategoriesContext from "../../contexts/categoriesContext";
 
 function useCategories() {
-  const { categories, getCategories } = useContext(CategoriesContext);
+  const categoriesContext = useContext(CategoriesContext);
 
-  return {
-    categories,
-    getCategories,
-  };
+  return categoriesContext;
 }
 
 export default useCategories;

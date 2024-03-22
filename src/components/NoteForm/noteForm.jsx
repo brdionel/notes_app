@@ -1,4 +1,5 @@
 import { Formik, Form } from "formik";
+import { BiPlus } from "react-icons/bi";
 import classes from "./noteForm.module.css";
 import TextArea from "../TextArea/textArea";
 import Input from "../Input/input";
@@ -12,7 +13,8 @@ import { useUser } from "../../hooks/Users/useUser";
 function NoteForm() {
   const { addToNotes, noteToEdit, handleNoteToEdit, updateNote } = useNotes();
   const { handleCloseNoteForm } = useApp();
-  const { categories, getCategories } = useCategories();
+  const { categories, getCategories, categoryToCreate, handleCategoryToCreate, createNewCategory, handleShowCategoryInput, showCategoryInput, inputRef, formRef, loadingCategory } = useCategories();
+
   const { currentUser } = useUser();
 
   if (!currentUser) return;
@@ -30,6 +32,7 @@ function NoteForm() {
           title: noteToEdit ? noteToEdit.title : "",
           content: noteToEdit ? noteToEdit.content : "",
           categories: noteToEdit ? noteToEdit.categories : [],
+          category: ""
         }}
         validate={(values) => {
           const errors = {};
@@ -71,7 +74,7 @@ function NoteForm() {
               values={values}
             />
             <TextArea
-              placeholder="Put the conten here"
+              placeholder="Put the content here"
               label="Content"
               name="content"
               touched={touched}
@@ -88,6 +91,36 @@ function NoteForm() {
             ) : (
               <p>Carregando categories</p>
             )}
+
+            <div className={classes.create_category_container}>
+            {
+              showCategoryInput 
+              ? <div className={classes.formCreateCategory} ref={formRef}>
+                    <input
+                      className={`${classes.custom_input} ${loadingCategory ? classes.input_disabled: ""}`} 
+                      name="category" 
+                      placeholder="¿Qué categoria deseas crear?"
+                      value={categoryToCreate}
+                      onChange={handleCategoryToCreate}
+                      ref={inputRef}
+                      disabled={loadingCategory}
+                    />
+                    <Button
+                      text={<BiPlus />}
+                      variant="primary"
+                      handleClick={createNewCategory}
+                      disabled={loadingCategory}
+                    />
+                </div>
+              : <button
+                className={classes.create_category_button}
+                onClick={() => handleShowCategoryInput(true)}
+              >
+                <span><BiPlus /></span>
+                Crear categoria
+              </button>
+            }
+            </div>
 
             <div className={classes.button_container}>
               <Button

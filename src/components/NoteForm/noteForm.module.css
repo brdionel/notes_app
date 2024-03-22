@@ -117,3 +117,70 @@
   background-color: var(--white);
   padding: 0 5px;
 }
+
+.create_category_container {
+  margin-bottom: 20px;
+}
+
+.create_category_button {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    padding: 0 1rem;
+    min-height: 45px;
+    position: relative;
+}
+
+.create_category_button span {
+  display: grid;
+  place-items: center;
+}
+
+.create_category_button:hover {
+  cursor: pointer;
+  transition: background 0.1s ease-out 0s;
+  background: #f2f2f2;
+  border-radius: 3px;
+}
+
+
+.custom_input {
+  background: var(--white);
+  border: 1px solid var(--black);
+  border-radius: 0;
+  box-sizing: border-box;
+  color: var(--black);
+  margin: 0;
+  padding: 15px;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 4px;
+  outline: none;
+}
+
+.custom_input:focus {
+  border: none;
+  box-shadow: rgb(239,193,49) 0px 0px 0px 2px inset;
+}
+
+.formCreateCategory {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.buttonConfirmCreateCategory {
+  border: none;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.input_disabled {
+  cursor: not-allowed;
+}

@@ -10,6 +10,7 @@ const Register = ({
   handleShowPasswordClick,
   showPassword,
   handlePassword,
+  loading
 }) => {
 
   return (
@@ -76,7 +77,7 @@ const Register = ({
                 handleClick={() => setStep(0)}
               />
               <Button
-                disabled={isSubmitting}
+                disabled={loading || isSubmitting}
                 text={"REGISTER"}
                 type={"submit"}
                 variant={"primary"}

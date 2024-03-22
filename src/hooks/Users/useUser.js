@@ -19,6 +19,7 @@ export const useUser = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState(0);
   const { clearNotes } = useNotes();
+  const [loading, setLoading] = useState(false);
 
   const handlePassword = (value) => {
     setPassword(value);
@@ -30,7 +31,9 @@ export const useUser = () => {
 
   const handleSubmitEmail = async (emailLogin) => {
     try {
+      setLoading(true);
       const response = await validateEmailService(emailLogin);
+      setLoading(false);
       if (response.data !== undefined) {
         if (!response.data.error) {
           setStep(1);
@@ -39,6 +42,7 @@ export const useUser = () => {
         }
       }
     } catch (error) {
+      setLoading(false);
       iziToast.error({
         title: "Error",
         message: error.response ? error.response.data.message : "Ha ocurrido un error, refresca la página por favor",
@@ -53,7 +57,9 @@ export const useUser = () => {
 
   const register = async (email, password) => {
     try {
+      setLoading(true);
       const rtaRegister = await registerService(email, password);
+      setLoading(false);
       if (rtaRegister.data?.success) {
         const user = rtaRegister.data.data;
         setCurrentUser(user);
@@ -67,6 +73,7 @@ export const useUser = () => {
       }
     } catch (error) {
       console.log({ error });
+      setLoading(false);
       iziToast.error({
         title: "Error",
         message: error.response.data.message,
@@ -84,7 +91,9 @@ export const useUser = () => {
 
   const handleSubmitLogin = async (emailLogin, passwordLogin) => {
     try {
+      setLoading(true);
       const rta = await loginService(emailLogin, passwordLogin);
+      setLoading(false);
       if (rta.data?.success) {
         const user = rta.data.data;
         setCurrentUser(user);
@@ -95,6 +104,7 @@ export const useUser = () => {
       }
     } catch (error) {
       console.log({ error });
+      setLoading(false);
       iziToast.error({
         title: "Error",
         message: error.response.data.message,
@@ -119,5 +129,6 @@ export const useUser = () => {
     handleEmail,
     handleSubmit: handleSubmitLogin,
     handleShowPasswordClick,
+    loading
   };
 };

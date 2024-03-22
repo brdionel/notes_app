@@ -20,6 +20,7 @@ export default function Login() {
     handleShowPasswordClick,
     handleSubmit,
     handlePassword,
+    loading
   } = useUser();
 
   const { getNotes } = useNotes();
@@ -80,10 +81,11 @@ export default function Login() {
                 </div>
                 <div className={classes.login_button_container}>
                   <Button
-                    disabled={isSubmitting}
+                    disabled={loading || isSubmitting}
                     text={"Continue"}
                     type={"submit"}
                     variant={"primary"}
+                    loading={loading}
                   />
                 </div>
               </Form>
@@ -174,7 +176,7 @@ export default function Login() {
                     type={"button"}
                   />
                   <Button
-                    disabled={isSubmitting}
+                    disabled={loading || isSubmitting}
                     text={"LOG IN"}
                     type={"submit"}
                     variant={"primary"}
@@ -194,6 +196,7 @@ export default function Login() {
           handleShowPasswordClick={handleShowPasswordClick}
           showPassword={showPassword}
           handlePassword={handlePassword}
+          loading={loading}
         />
       )}
     </div>
