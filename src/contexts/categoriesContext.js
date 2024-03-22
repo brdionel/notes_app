@@ -49,7 +49,7 @@ export function CategoriesContextProvider({ children }) {
     .then(response => {
       console.log({response})
       setLoadingCategory(false);
-      if(response.status == 200) {
+      if(response.status === 200) {
         const categoryCreated = response.data;
         setCategories(prevState => [...prevState, categoryCreated]);
         iziToast.success({
