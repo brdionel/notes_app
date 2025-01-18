@@ -14,13 +14,17 @@ export function CategoriesContextProvider({ children }) {
   const formRef = useRef();
 
   const getCategories = () => {
+    setLoadingCategory(true)
     getAllCategories()
       .then((response) => {
         setCategories(response.data.categories);
       })
       .catch((error) => {
-        console.log({ error });
-      });
+        console.log({ error })
+      })
+      .finally(() => {
+        setLoadingCategory(false)
+      }) 
   };
 
   const handleCategoryToCreate = (e) => {

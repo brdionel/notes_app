@@ -13,7 +13,7 @@ function useHelperApp() {
 
   useEffect(() => {
     const fn = async () => {
-      const loggedUserJSON = JSON.parse(localStorage.getItem("currentUser"));
+      const loggedUserJSON = JSON.parse(localStorage.getItem("TAKING_NOTES_currentUser"));
       if (loggedUserJSON && !isInitialized) {
         setCurrentUser(loggedUserJSON);
         setToken(loggedUserJSON.token);

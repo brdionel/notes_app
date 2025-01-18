@@ -9,15 +9,13 @@ import { UserContextProvider } from "./contexts/userContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <AppContextProvider>
-      <UserContextProvider>
-        <CategoriesContextProvider>
-          <NotesContextProvider>
-            <App />
-          </NotesContextProvider>
-        </CategoriesContextProvider>
-      </UserContextProvider>
-    </AppContextProvider>
-  </React.StrictMode>
+  <AppContextProvider>
+    <UserContextProvider>
+      <CategoriesContextProvider>
+        <NotesContextProvider>
+          <App />
+        </NotesContextProvider>
+      </CategoriesContextProvider>
+    </UserContextProvider>
+  </AppContextProvider>
 );

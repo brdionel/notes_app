@@ -13,26 +13,31 @@ import { useUser } from "../../hooks/Users/useUser";
 function NoteForm() {
   const { addToNotes, noteToEdit, handleNoteToEdit, updateNote } = useNotes();
   const { handleCloseNoteForm } = useApp();
-  const { categories, getCategories, categoryToCreate, handleCategoryToCreate, createNewCategory, handleShowCategoryInput, showCategoryInput, inputRef, formRef, loadingCategory } = useCategories();
+  const {
+    categories,
+    categoryToCreate,
+    handleCategoryToCreate,
+    createNewCategory,
+    handleShowCategoryInput,
+    showCategoryInput,
+    inputRef,
+    formRef,
+    loadingCategory,
+  } = useCategories();
 
   const { currentUser } = useUser();
 
   if (!currentUser) return;
 
-  if (categories && categories.length === 0) {
-    getCategories();
-  }
-
   return (
     <div className={classes.form_container}>
-      <h1>{noteToEdit ? "Edit note" : "Create note"}</h1>
       <Formik
         enableReinitialize={true}
         initialValues={{
           title: noteToEdit ? noteToEdit.title : "",
           content: noteToEdit ? noteToEdit.content : "",
           categories: noteToEdit ? noteToEdit.categories : [],
-          category: ""
+          category: "",
         }}
         validate={(values) => {
           const errors = {};
@@ -81,45 +86,47 @@ function NoteForm() {
               errors={errors}
               values={values}
             />
-            {categories.length ? (
+            {categories.length > 0 && (
               <MultipleSelect
                 name="categories"
                 values={values}
                 options={categories}
                 setFieldValue={setFieldValue}
               />
-            ) : (
-              <p>Carregando categories</p>
             )}
 
             <div className={classes.create_category_container}>
-            {
-              showCategoryInput 
-              ? <div className={classes.formCreateCategory} ref={formRef}>
-                    <input
-                      className={`${classes.custom_input} ${loadingCategory ? classes.input_disabled: ""}`} 
-                      name="category" 
-                      placeholder="¿Qué categoria deseas crear?"
-                      value={categoryToCreate}
-                      onChange={handleCategoryToCreate}
-                      ref={inputRef}
-                      disabled={loadingCategory}
-                    />
-                    <Button
-                      text={<BiPlus />}
-                      variant="primary"
-                      handleClick={createNewCategory}
-                      disabled={loadingCategory}
-                    />
+              {showCategoryInput ? (
+                <div className={classes.formCreateCategory} ref={formRef}>
+                  <input
+                    className={`${classes.custom_input} ${
+                      loadingCategory ? classes.input_disabled : ""
+                    }`}
+                    name="category"
+                    placeholder="Which category to create?"
+                    value={categoryToCreate}
+                    onChange={handleCategoryToCreate}
+                    ref={inputRef}
+                    disabled={loadingCategory}
+                  />
+                  <Button
+                    text={<BiPlus />}
+                    variant="primary"
+                    handleClick={createNewCategory}
+                    disabled={loadingCategory}
+                  />
                 </div>
-              : <button
-                className={classes.create_category_button}
-                onClick={() => handleShowCategoryInput(true)}
-              >
-                <span><BiPlus /></span>
-                Crear categoria
-              </button>
-            }
+              ) : (
+                <button
+                  className={classes.create_category_button}
+                  onClick={() => handleShowCategoryInput(true)}
+                >
+                  <span>
+                    <BiPlus />
+                  </span>
+                  Crear categoria
+                </button>
+              )}
             </div>
 
             <div className={classes.button_container}>

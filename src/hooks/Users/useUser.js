@@ -84,7 +84,7 @@ export const useUser = () => {
 
   const logout = useCallback(() => {
     setCurrentUser(null);
-    localStorage.setItem("currentUser", null);
+    localStorage.setItem("TAKING_NOTES_currentUser", null);
     setToken(null);
     clearNotes();
   }, [setCurrentUser, clearNotes]);
@@ -98,7 +98,7 @@ export const useUser = () => {
         const user = rta.data.data;
         setCurrentUser(user);
         setToken(user.token);
-        localStorage.setItem("currentUser", JSON.stringify(user));
+        localStorage.setItem("TAKING_NOTES_currentUser", JSON.stringify(user));
         handleCloseModal();
         return user;
       }

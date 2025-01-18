@@ -2,7 +2,7 @@ import Wrapper from "../Wrapper/wrapper";
 import noteClasses from "../NoteItem/noteItem.module.css";
 import { BiSolidBox } from "react-icons/bi";
 import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
-import classes from "./introduction.module.css"
+import classes from "./introduction.module.css";
 
 const notes = [
   {
@@ -29,7 +29,6 @@ function Introduction() {
   return (
     <Wrapper>
       <main style={{ marginTop: "2rem" }}>
-
         <p>Example:</p>
         <div className={classes.introduction_notes_container}>
           {notes.map((note) => (
@@ -38,14 +37,16 @@ function Introduction() {
                 <h3>{note.title}</h3>
                 <div className={noteClasses.note_category_container}>
                   {note.categories.map((category) => (
-                    <span className={noteClasses.note_category_chip} key={category}>
+                    <span
+                      className={noteClasses.note_category_chip}
+                      key={category}
+                    >
                       {category}
                     </span>
                   ))}
                 </div>
               </div>
               <div className={noteClasses.button_container}>
-                <span title={`${"Archive"}`}>{<BiSolidBox />}</span>
                 <span title="Edit">
                   <AiTwotoneEdit />
                 </span>
@@ -56,7 +57,6 @@ function Introduction() {
             </div>
           ))}
         </div>
-        
       </main>
     </Wrapper>
   );
