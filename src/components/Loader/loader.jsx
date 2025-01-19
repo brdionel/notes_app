@@ -1,12 +1,12 @@
 import { ring2 } from "ldrs";
 import classes from "./loader.module.css";
 
-const Loader = () => {
+const Loader = ({ size = "40" }) => {
   ring2.register();
   return (
     <div className={classes.loaderContainer}>
       <l-ring-2
-        size="40"
+        size={size}
         stroke="5"
         stroke-length="0.25"
         bg-opacity="0.1"

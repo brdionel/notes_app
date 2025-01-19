@@ -1,5 +1,7 @@
 import { Formik, Form } from "formik";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { BiPlus } from "react-icons/bi";
+
 import classes from "./noteForm.module.css";
 import TextArea from "../TextArea/textArea";
 import Input from "../Input/input";
@@ -9,6 +11,7 @@ import useApp from "../../hooks/App/useApp";
 import useCategories from "../../hooks/Categories/useCategories";
 import MultipleSelect from "../MultipleSelect/multipleSelect";
 import { useUser } from "../../hooks/Users/useUser";
+import Loader from "../Loader/loader";
 
 function NoteForm() {
   const { addToNotes, noteToEdit, handleNoteToEdit, updateNote } = useNotes();
@@ -21,6 +24,8 @@ function NoteForm() {
     handleShowCategoryInput,
     showCategoryInput,
     inputRef,
+    isErrorGettingCategories,
+    isLoadingCreateCategory,
     formRef,
     loadingCategory,
   } = useCategories();
@@ -86,7 +91,19 @@ function NoteForm() {
               errors={errors}
               values={values}
             />
-            {categories.length > 0 && (
+            {isErrorGettingCategories && (
+              <span className={classes.error_categories}>
+                <AiOutlineExclamationCircle />
+                <span>Error geting categories</span>
+              </span>
+            )}
+
+            {(loadingCategory || isLoadingCreateCategory) && (
+              <span className={classes.loaderCategoryContainer}>
+                <Loader size={"20"} />
+              </span>
+            )}
+            {!isErrorGettingCategories && categories?.length > 0 && (
               <MultipleSelect
                 name="categories"
                 values={values}

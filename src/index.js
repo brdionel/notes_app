@@ -4,18 +4,22 @@ import "./index.css";
 import App from "./App";
 import { AppContextProvider } from "./contexts/appContext";
 import { NotesContextProvider } from "./contexts/notesContext";
-import { CategoriesContextProvider } from "./contexts/categoriesContext";
 import { UserContextProvider } from "./contexts/userContext";
 
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
-  <AppContextProvider>
-    <UserContextProvider>
-      <CategoriesContextProvider>
+  <QueryClientProvider client={queryClient}>
+    <AppContextProvider>
+      <UserContextProvider>
         <NotesContextProvider>
           <App />
         </NotesContextProvider>
-      </CategoriesContextProvider>
-    </UserContextProvider>
-  </AppContextProvider>
+      </UserContextProvider>
+    </AppContextProvider>
+  </QueryClientProvider>
 );

@@ -1,10 +1,12 @@
 import axios from "axios";
 import { SERVER_URL } from "./settings";
 
-export const getAllCategories = () => {
-  return axios.get(`${SERVER_URL}/categories`);
+export const getAllCategories = async () => {
+  const response = await axios.get(`${SERVER_URL}/categories`);
+  return response.data.categories;
 };
 
-export const createCategory = (category) => {
-  return axios.post(`${SERVER_URL}/categories`, category);
-}
+export const createCategory = async (category) => {
+  const response = await axios.post(`${SERVER_URL}/categories`, category);
+  return response.data;
+};

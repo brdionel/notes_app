@@ -184,3 +184,17 @@
 .input_disabled {
   cursor: not-allowed;
 }
+
+.error_categories {
+  color: var(--red-error);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.loaderCategoryContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
