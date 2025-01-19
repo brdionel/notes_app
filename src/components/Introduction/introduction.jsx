@@ -1,6 +1,5 @@
 import Wrapper from "../Wrapper/wrapper";
 import noteClasses from "../NoteItem/noteItem.module.css";
-import { BiSolidBox } from "react-icons/bi";
 import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai";
 import classes from "./introduction.module.css";
 
