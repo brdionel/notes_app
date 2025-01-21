@@ -7,7 +7,7 @@ function useCategories() {
   const {
     isLoading: loadingCategory,
     isError: isErrorGettingCategories,
-    data: categories,
+    data: categories = [],
   } = useQuery({
     queryKey: ["categoriesQuery"],
     queryFn: getAllCategories,
@@ -99,9 +99,12 @@ function useCategories() {
     }
   }, [showCategoryInput]);
 
+  const categoriesWithAll = [{ id: "all", name: "all" }, ...categories];
+
   return {
     buttonRef,
     categories,
+    categoriesWithAll,
     categoryToCreate,
     createNewCategory,
     formRef,

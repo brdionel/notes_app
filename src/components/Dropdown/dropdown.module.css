@@ -1,0 +1,90 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownToggleOrder {
+  border-radius: 6px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  outline: 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-color: var(--white);
+  color: var(--black);
+  font-size: 1rem;
+  line-height: 22px;
+  position: relative;
+  font-weight: 400;
+  gap: .5rem;
+  padding: 8px;
+}
+
+.openDropArrow svg{
+  transform: rotate(180deg);
+}
+
+.dropdownToggleOrderText{
+  text-transform: capitalize;
+  display: flex;
+  gap: .25rem
+}
+
+.dropdownMenu {
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: var(--white);
+  border: 1px solid var(--grey-400);
+  border-top: none;
+  display: none;
+  min-width: 200px;
+  border-width: 1px;
+  top: 39px;
+  right: 0;
+  z-index: 10;
+  border-radius: 6px;
+  padding: 0;
+  max-width: 200px;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dropdownMenu li {
+  padding: 8px 12px;
+}
+
+.dropdown .dropdownMenu {
+  display: block;
+}
+
+.dropdownMenu li {
+  color: var(--grey-500);
+  outline: none;
+  font-size: .875rem;
+  text-transform: capitalize;
+  text-align: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: var(--white);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.dropdownMenu li:hover {
+  background-color: var(--grey);
+    transition-duration: .3s;
+}
+
+.dropdownMenu li.selected {
+  background-color: var(--grey);
+  color: var(--black);
+}

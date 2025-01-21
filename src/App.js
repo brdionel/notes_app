@@ -13,6 +13,7 @@ import useHelperApp from "./hooks/App/useHelperApp";
 import Introduction from "./components/Introduction/introduction";
 import classes from "./App.module.css";
 import Loader from "./components/Loader/loader";
+import Filters from "./components/Filters/filters";
 
 function App() {
   const {
@@ -25,8 +26,9 @@ function App() {
 
   const { removeFromNotes } = useNotes();
 
-  const { handleCloseFormNotesModal, currentUser, loadingCurrentUser } = useHelperApp();
-  
+  const { handleCloseFormNotesModal, currentUser, loadingCurrentUser } =
+    useHelperApp();
+
   return (
     <div>
       <Helmet>
@@ -39,6 +41,7 @@ function App() {
       {!loadingCurrentUser && !currentUser && <Introduction />}
 
       <Wrapper>
+        {!loadingCurrentUser && <Filters />}
         <NotesList />
       </Wrapper>
 

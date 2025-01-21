@@ -7,6 +7,7 @@ import { NotesContextProvider } from "./contexts/notesContext";
 import { UserContextProvider } from "./contexts/userContext";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { FiltersContextProvider } from "./contexts/filtersContext";
 
 const queryClient = new QueryClient();
 
@@ -16,9 +17,11 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <AppContextProvider>
       <UserContextProvider>
-        <NotesContextProvider>
-          <App />
-        </NotesContextProvider>
+        <FiltersContextProvider>
+          <NotesContextProvider>
+            <App />
+          </NotesContextProvider>
+        </FiltersContextProvider>
       </UserContextProvider>
     </AppContextProvider>
   </QueryClientProvider>

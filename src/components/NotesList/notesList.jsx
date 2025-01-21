@@ -8,6 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 function NotesList() {
   const {
+    filter: categoryFilter,
     notes,
     handleNoteToEdit,
     toggleArchiveNote,
@@ -36,10 +37,25 @@ function NotesList() {
   const getNotesList = () => {
     switch (mode) {
       case "main": {
-        return notes.filter((note) => !note.is_archived);
+        return notes.filter((note) => {
+          return (
+            !note.is_archived &&
+            (categoryFilter.name === "all" ||
+              note.categories.some(
+                (category) => category.name === categoryFilter.name
+              ))
+          );
+        });
       }
       case "archived": {
-        return notes.filter((note) => note.is_archived);
+        return notes.filter(
+          (note) =>
+            note.is_archived &&
+            (categoryFilter.name === "all" ||
+              note.categories.some(
+                (category) => category.name === categoryFilter.name
+              ))
+        );
       }
       default: {
         return [];
