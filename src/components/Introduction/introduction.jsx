@@ -6,21 +6,21 @@ import classes from "./introduction.module.css";
 const notes = [
   {
     title: "Developing a To-Do List Application with React and Node.js",
-    categories: ["Personal", "ideas", "Estudio"],
+    categories: ["Personal", "Learning"],
   },
   {
     title: "Implementing User Authentication",
-    categories: ["Personal", "Estudio"],
+    categories: ["Learning"],
   },
   {
     title:
       "Managing Global State in a Task List Application with React's Context API",
-    categories: ["Estudio"],
+    categories: ["Learning"],
   },
   {
     title:
       "Configuring a MySQL Database to Store Task and User Data in the Application",
-    categories: ["Trabajo"],
+    categories: ["Trabajo", "Work"],
   },
 ];
 

@@ -41,7 +41,7 @@ function App() {
       {!loadingCurrentUser && !currentUser && <Introduction />}
 
       <Wrapper>
-        {!loadingCurrentUser && <Filters />}
+        {!loadingCurrentUser && currentUser && <Filters />}
         <NotesList />
       </Wrapper>
 
