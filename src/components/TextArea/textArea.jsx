@@ -7,15 +7,13 @@ function TextArea(props) {
     const { label, name, placeholder, values } = props;
     const textareaRef = useRef(null);
 
-    const fieldUsed = [values[name]]
-
     useEffect(() => {
         const textarea = textareaRef.current;
         if (textarea) {
           textarea.style.height = "auto"; // Resetea la altura
           textarea.style.height = `${textarea.scrollHeight}px`; // Ajusta según el contenido inicial
         }
-      }, [fieldUsed] );
+      }, [] );
     
     const handleInput = (event) => {
         const textarea = event.target;
