@@ -75,77 +75,81 @@ function NoteForm() {
       >
         {({ touched, errors, values, resetForm, setFieldValue }) => (
           <Form className={classes.form}>
-            <Input
-              name="title"
-              label="Title *"
-              touched={touched}
-              errors={errors}
-              placeholder="Title *"
-              values={values}
-            />
-            <TextArea
-              placeholder="Put the content here"
-              label="Content"
-              name="content"
-              touched={touched}
-              errors={errors}
-              values={values}
-            />
-            {isErrorGettingCategories && (
-              <span className={classes.error_categories}>
-                <AiOutlineExclamationCircle />
-                <span>Error geting categories</span>
-              </span>
-            )}
-
-            {(loadingCategory || isLoadingCreateCategory) && (
-              <span className={classes.loaderCategoryContainer}>
-                <Loader size={"20"} />
-              </span>
-            )}
-            {!isErrorGettingCategories && categories?.length > 0 && (
-              <MultipleSelect
-                name="categories"
-                values={values}
-                options={categories}
-                setFieldValue={setFieldValue}
-              />
-            )}
-
-            <div className={classes.create_category_container}>
-              {showCategoryInput ? (
-                <div className={classes.formCreateCategory} ref={formRef}>
-                  <input
-                    className={`${classes.custom_input} ${
-                      loadingCategory ? classes.input_disabled : ""
-                    }`}
-                    name="category"
-                    placeholder="Which category to create?"
-                    value={categoryToCreate}
-                    onChange={handleCategoryToCreate}
-                    ref={inputRef}
-                    disabled={loadingCategory}
-                  />
-                  <Button
-                    text={<BiPlus />}
-                    variant="primary"
-                    handleClick={createNewCategory}
-                    disabled={loadingCategory}
-                  />
-                </div>
-              ) : (
-                <button
-                  className={classes.create_category_button}
-                  onClick={() => handleShowCategoryInput(true)}
-                >
-                  <span>
-                    <BiPlus />
+            <section className={classes.form_section}>
+              <div>
+                <Input
+                  name="title"
+                  label="Title *"
+                  touched={touched}
+                  errors={errors}
+                  placeholder="Title *"
+                  values={values}
+                />
+                <TextArea
+                  placeholder="Put the content here"
+                  label="Content"
+                  name="content"
+                  touched={touched}
+                  errors={errors}
+                  values={values}
+                />
+              </div>
+              <div>
+                {isErrorGettingCategories && (
+                  <span className={classes.error_categories}>
+                    <AiOutlineExclamationCircle />
+                    <span>Error geting categories</span>
                   </span>
-                  Crear categoria
-                </button>
-              )}
-            </div>
+                )}
 
+                {(loadingCategory || isLoadingCreateCategory) && (
+                  <span className={classes.loaderCategoryContainer}>
+                    <Loader size={"20"} />
+                  </span>
+                )}
+                {!isErrorGettingCategories && categories?.length > 0 && (
+                  <MultipleSelect
+                    name="categories"
+                    values={values}
+                    options={categories}
+                    setFieldValue={setFieldValue}
+                  />
+                )}
+
+                <div className={classes.create_category_container}>
+                  {showCategoryInput ? (
+                    <div className={classes.formCreateCategory} ref={formRef}>
+                      <input
+                        className={`${classes.custom_input} ${loadingCategory ? classes.input_disabled : ""
+                          }`}
+                        name="category"
+                        placeholder="Which category to create?"
+                        value={categoryToCreate}
+                        onChange={handleCategoryToCreate}
+                        ref={inputRef}
+                        disabled={loadingCategory}
+                      />
+                      <Button
+                        text={<BiPlus />}
+                        variant="primary"
+                        handleClick={createNewCategory}
+                        disabled={loadingCategory}
+                      />
+                    </div>
+                  ) : (
+                    <button
+                      className={classes.create_category_button}
+                      onClick={() => handleShowCategoryInput(true)}
+                    >
+                      <span>
+                        <BiPlus />
+                      </span>
+                      Crear categoria
+                    </button>
+                  )}
+                </div>
+              </div>
+            </section>
             <div className={classes.button_container}>
               <Button
                 text="Cancel"

@@ -23,7 +23,7 @@ function useHelperApp() {
           await getNotes();
           setLoadingNotes(false)
         } catch(error) {
-          setLoadingNotes()
+          setLoadingNotes(false)
         }
       }
       setLoadingCurrentUser(false)

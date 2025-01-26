@@ -15,6 +15,17 @@
     margin-bottom: 4px;
     outline: none;
 }
+/*
+
+.form_control .input_with_text {
+  border: none;
+}
+
+.form_control .input_with_text:hover {
+  background-color: #091E420F;
+  transition: all ease;
+}
+*/
 
 .input_error {
   border-bottom: 1px solid var(--red-error) !important;

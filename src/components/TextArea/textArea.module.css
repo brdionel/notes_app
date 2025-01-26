@@ -14,6 +14,11 @@
   width: 100%;
   margin-bottom: 4px;
   outline: none;
+  resize: none;
+  min-height: 50px; /* Altura mínima */
+  overflow: hidden;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .input_container {
@@ -61,4 +66,10 @@
 .form_control textarea::-webkit-input-placeholder {
   opacity: 0;
   transition: opacity 0.2s ease-out;
+}
+
+@media screen and (min-width: 768px) {
+  .form_control textarea {
+    max-height: 330px;
+  }
 }

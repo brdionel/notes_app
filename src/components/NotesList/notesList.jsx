@@ -18,13 +18,17 @@ function NotesList() {
     fetchMoreData,
     hasMore,
   } = useNotes();
+  
   const { setShowNoteForm, mode } = useApp();
   const { currentUser } = useUser();
-
-  if (!currentUser || !pageControl) return [];
+  
+  if (!currentUser) return [];
+  if (!pageControl) return <div>
+    <h5>You have no notes here ...</h5>
+  </div>;
 
   const { totalPages } = pageControl;
-
+  
   const handleClickEdit = (noteClick) => {
     const noteToEdit = notes.find((note) => note._id === noteClick._id);
 
@@ -33,7 +37,7 @@ function NotesList() {
       setShowNoteForm(true);
     }
   };
-
+  
   const getNotesList = () => {
     switch (mode) {
       case "main": {
@@ -74,7 +78,7 @@ function NotesList() {
   ));
 
   if (loadingNotes) return <Loader />;
-
+  
   const infiniteScrollComponente =
     totalPages === 1 ? (
       listNotes

@@ -4,6 +4,7 @@ import classes from "./input.module.css"
 function Input(props) {
 
     const { name, label, touched, errors, placeholder, values } = props;
+    console.log({props})
 
     return (
         <div className={classes.form_control}>

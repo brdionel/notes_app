@@ -4,3 +4,28 @@
     }
 }
 
+.modal_note_form {
+    position: relative;
+    max-height: 80vh;
+    width: 275px;
+    margin: 10vh auto;
+    background-color: var(--white);
+    padding: 10px 20px;
+    cursor: auto;
+  }
+  
+  @media (min-width: 768px) {
+    .modal_note_form {
+      width: 100%;
+      max-width: calc(-120px + 100vw);
+      max-height: calc(-119px + 100vh);
+      margin: 10vh auto;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .modal_note_form {
+      max-width: calc(-400px + 100vw);
+      max-height: 550px;
+    }
+  }

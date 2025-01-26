@@ -18,9 +18,9 @@
 
 .button_container {
   display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1em;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1em;
 }
 
 .multiselect_container {
@@ -123,15 +123,15 @@
 }
 
 .create_category_button {
-    border: none;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 600;
-    padding: 0 1rem;
-    min-height: 45px;
-    position: relative;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  padding: 0 1rem;
+  min-height: 45px;
+  position: relative;
 }
 
 .create_category_button span {
@@ -163,7 +163,7 @@
 
 .custom_input:focus {
   border: none;
-  box-shadow: rgb(239,193,49) 0px 0px 0px 2px inset;
+  box-shadow: rgb(239, 193, 49) 0px 0px 0px 2px inset;
 }
 
 .formCreateCategory {
@@ -197,4 +197,15 @@
   justify-content: center;
   align-items: center;
   height: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .form_section {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    /* El bloque izquierdo es 3 veces más grande que el derecho */
+    gap: 16px;
+    /* Espacio entre columnas */
+    padding: 16px;
+  }
 }

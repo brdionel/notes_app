@@ -24,7 +24,7 @@ function App() {
     handleCloseModal,
   } = useApp();
 
-  const { removeFromNotes } = useNotes();
+  const { loadingNotes, notes, removeFromNotes } = useNotes();
 
   const { handleCloseFormNotesModal, currentUser, loadingCurrentUser } =
     useHelperApp();
@@ -37,16 +37,19 @@ function App() {
 
       <Header />
 
-      {loadingCurrentUser && <Loader />}
-      {!loadingCurrentUser && !currentUser && <Introduction />}
+      {(loadingCurrentUser || loadingNotes) && <Loader />}
+      {!loadingCurrentUser && !currentUser &&  <Introduction />}
 
       <Wrapper>
-        {!loadingCurrentUser && currentUser && <Filters />}
+        {!loadingCurrentUser && currentUser && notes?.length > 0 && <Filters />}
+      </Wrapper>
+      
+      <Wrapper>
         <NotesList />
       </Wrapper>
 
       {showNoteForm && (
-        <Modal handleClose={handleCloseFormNotesModal}>
+        <Modal handleClose={handleCloseFormNotesModal} propsClasses={classes.modal_note_form}>
           <NoteForm />
         </Modal>
       )}

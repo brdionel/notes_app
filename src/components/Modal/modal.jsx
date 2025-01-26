@@ -2,11 +2,11 @@ import { createPortal } from "react-dom";
 import { GrClose } from "react-icons/gr";
 import classes from "./modal.module.css";
 
-function ModalContent({ handleClose, children }) {
+function ModalContent({ propsClasses={}, handleClose, children }) {
 
   return (
     <div className={classes.modal_container}>
-      <div className={classes.modal_content}>
+      <div className={`${classes.modal_content} ${propsClasses}`}>
         <button
           onClick={handleClose}
           className={classes.close_button}
